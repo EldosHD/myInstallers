@@ -19,7 +19,7 @@ class bcolors:
 
 #-------------------Variables--------------------
 standardPathForLuaMacros = 'C:/Program Files (x86)/'
-
+noColorMode = False
 #-------------------Functions--------------------
 
 def downloadFile(url, nameFile):
