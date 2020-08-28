@@ -37,14 +37,20 @@ def unZipFiles(fileToUnzip, directoryToUnzipTo):
 
 def getPathAndMove():
     print('Where do you want to install it? (If no path is specefied it will be installed in C:\Program Files (x86))\n')
-    path = input('NOTE THAT THE PATH HAS TO BE WRITTEN LIKE THIS C:/Folder/Folder/Folder \n')
+    path = input('NOTE THAT THE PATH HAS TO BE WRITTEN LIKE THIS C:/Folder/Folder/Folder/  <--- Dont forget the last slash\n')
     if path == '':
         path = standardPathForLuaMacros
+    elif path.find('/', len(path)-2) == -1:
+        path = path + '/'
 
-    print('--Moving luaMacros.zip to ' + path + '--')
-    try:
-        shutil.move('luaMacros.zip', path)
-    except:
+    
+    if os.path.exists(path):
+        print('--Moving luaMacros.zip to ' + path + '--')
+        if os.path.exists(path + 'luaMacros.zip'):
+            return path
+        else:
+            shutil.move('luaMacros.zip', path)
+    else:
         print(bcolors.FAIL + 'you specified an invalid Path!' + bcolors.ENDC)
         tryAgain = input('Do you want to specify another path? (NOTE if you dont specify a path it will be installed to C:/Program Files (x86)/) (Y/N)')
         if tryAgain.lower() == 'y':
