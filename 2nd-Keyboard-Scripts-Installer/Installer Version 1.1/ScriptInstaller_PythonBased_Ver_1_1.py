@@ -111,7 +111,7 @@ def main(noColorsNoDelete):
 
     print(bcolors.BOLD + 'Welcome to this installer Script for Valis scripts. I will guide you through all of this. \n' +bcolors.ENDC)
 
-    print(bcolors.WARNING + 'NOTE: If you want to install my Scripts, you should run this Script as administrator \n' + bcolors.ENDC)
+    print(bcolors.WARNING + 'NOTE: If you want to install my Scripts or Install LuaMacros in the Program Files or Program Files (86x) Folder, you should run this Script as administrator \n' + bcolors.ENDC)
 
     allScripts = input('Do you want to install all of Valis scripts? (Y/N) \n')
     autoHotkey = input('Do you want to install Autohotkey? (Y/N) \n')
