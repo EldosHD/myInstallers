@@ -57,6 +57,7 @@ def getPathAndMove():
             path = getPathAndMove()
         else:
             path = standardPathForLuaMacros
+            shutil.move('luaMacros.zip', path)
     return path
 
 def removeSlashAndDash(stringToEdit):
