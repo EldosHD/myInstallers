@@ -66,19 +66,14 @@ def printPossibleOptionsAndExit():
 #----------------End of Functions----------------
 
 
-#------------------Registry Edit-----------------
-"""access_registry = winreg.ConnectRegistry(None,winreg.HKEY_CURRENT_USER)
-access_key = winreg.OpenKey(winreg.HKEY_CURRENT_USER,r"Console",0,winreg.KEY_WRITE | winreg.KEY_WOW64_64KEY)
-sub_key = r'supertest'
-winreg.SetValueEx(access_key, sub_key,0,winreg.REG_DWORD,1041)            
 
-winreg.DeleteKeyEx(access_key, sub_key)"""
 
 #----------------Beginn of Program---------------
 def main(noColorsNoDelete=None):
 
     if noColorsNoDelete == None:
-        x=1
+        print("The delete function doesn´t work right now. Please run the script in No Delete mode!")
+        exit()
     elif removeSlashAndDash(noColorsNoDelete).lower() == 'nocolor':
         bcolors.HEADER = ''
         bcolors.OKBLUE = ''
@@ -88,12 +83,22 @@ def main(noColorsNoDelete=None):
         bcolors.ENDC = ''
         bcolors.BOLD = ''
         bcolors.UNDERLINE = ''
+
+        noColorMode = True
     elif removeSlashAndDash(noColorsNoDelete).lower() == 'nodelete':
-        dontDelete = False
+        noDeleteMode = False
     else:
         printPossibleOptionsAndExit()
 
-    
+    #------------------Registry Edit-----------------
+    if noColorMode == False:
+        access_registry = winreg.ConnectRegistry(None,winreg.HKEY_CURRENT_USER)
+        access_key = winreg.OpenKey(winreg.HKEY_CURRENT_USER,r"Console",0,winreg.KEY_WRITE | winreg.KEY_WOW64_64KEY)
+        sub_key = r'VirtualTerminalLevel'
+        winreg.SetValueEx(access_key, sub_key,0,winreg.REG_DWORD,1041)            
+
+
+
     print(bcolors.BOLD + 'Welcome to this installer Script for Valis scripts. I will guide you through all of this. \n' +bcolors.ENDC)
 
     print(bcolors.WARNING + 'NOTE: If you want to install my Scripts, you should run this Script as administrator \n' + bcolors.ENDC)
@@ -150,9 +155,9 @@ def main(noColorsNoDelete=None):
     print(bcolors.OKGREEN + 'Thank you for using this installer the programm will exit in 3 seconds' + bcolors.ENDC)
 
 #---------------End of Installing----------------
-    '''print(str(access_key) + '\n')
-    print(str(access_registry) + '\n')
-    print(sub_key + '\n')'''
+    if noDeleteMode!=False:
+        #winreg.DeleteKeyEx(access_key, sub_key)
+        print('the delete function doesn´t work right now')
 
 
 
