@@ -66,14 +66,30 @@ def removeSlashAndDash(stringToEdit):
     returnString = returnString.replace(' ','')
     return returnString
 
-def printPossibleOptionsAndExit():
+def optionsAndExit():
     print(' \n')
-    print('Please use an valid Option! The possible options are:\n \n-NoColor if you dont want colors in the installer\n-NoDelete if you dont want to delete the registry entry for the colors\nYou can also use a / instead of a -\nThe options are not case sensitiv!')
+    print('Please use an valid Option! The possible options are:\n')
+    print('-NoColor if you dont want colors in the installer.')
+    print('-NoDelete if you dont want to delete the registry entry for the colors.')
+    print('You can also use a "/" instead of a "-".')
+    print('The options are not case sensitiv!')
     sys.exit()
+
+def helpAndExit():
+    print(' \n')
+    print('This is EldosHD´s installer script. You can use it to install his 2nd-Keyboard-Scripts, LuaMacros and Autohotkey.')
+    print("The script doesn´t work right now in normal mode. Please run it in NoColor or NoDelete Mode.")
+    print('To do that type the name of the script and give it the Option "-nocolor" or "-nodelete". You can also use a "/" instead of the "-".')
+    print('BTW the options are not case sensetiv.')
+    print('To see the options with an explanation, use "-o" or "-options".\n')
+    print('The script will make an entry in your registry so your terminal can display colors. However the install will delete the entry afterwards!')
+    print('If you dont want it to delete the entry, run it in -NoDelete mode.')
+    print('If you dont want the script to edit your registry at all, use -NoColor mode.')
+    print('If you want to check the code for yourself, or learn more about the script in general, check out my GitHub repo for the script! --> https://github.com/EldosHD/myInstallers')
+    print('Thank you for using this installer. Have a good day ;)')
+    sys.exit()
+
 #----------------End of Functions----------------
-
-
-
 
 #----------------Beginn of Program---------------
 def main(noColorsNoDelete):
@@ -82,14 +98,18 @@ def main(noColorsNoDelete):
     noDeleteMode = False
 
     if noColorsNoDelete == None:
-        print("The delete function doesn´t work right now. Please run the script in No Delete mode!")
-        sys.exit()
+       print("The delete function doesn´t work right now. Please run the script in No Delete mode!\n")
+       sys.exit()
     elif removeSlashAndDash(noColorsNoDelete).lower() == 'nocolor':
         noColorMode = True
     elif removeSlashAndDash(noColorsNoDelete).lower() == 'nodelete':
         noDeleteMode = False
+    elif removeSlashAndDash(noColorsNoDelete).lower() == 'h' or 'help':
+        helpAndExit()
+    elif removeSlashAndDash(noColorsNoDelete).lower() == 'o' or 'options' or 'option':
+        optionsAndExit()
     else:
-        printPossibleOptionsAndExit()
+        optionsAndExit()
 
     #------------------Registry Edit-----------------
     if noColorMode ==True:
@@ -103,8 +123,8 @@ def main(noColorsNoDelete):
         bcolors.UNDERLINE = ''
     else:
         access_registry = winreg.ConnectRegistry(None,winreg.HKEY_CURRENT_USER)
-        access_key = winreg.OpenKey(winreg.HKEY_CURRENT_USER,r"Console",0,winreg.KEY_WRITE | winreg.KEY_WOW64_64KEY)
-        sub_key = r'VirtualTerminalLevel'
+        access_key = winreg.OpenKey(winreg.HKEY_CURRENT_USER,r"Console",0,winreg.KEY_ALL_ACCESS | winreg.KEY_WOW64_64KEY)
+        sub_key = r'supertest'
         winreg.SetValueEx(access_key, sub_key,0,winreg.REG_DWORD,1041)            
 
 
@@ -155,19 +175,12 @@ def main(noColorsNoDelete):
         os.remove(path + 'luaMacros.zip')
 
 
-
-
-
-
-
-
-
     print(bcolors.OKGREEN + 'Thank you for using this installer the programm will exit in 3 seconds' + bcolors.ENDC)
 
 #---------------End of Installing----------------
-    if noDeleteMode!=False:
+    if noDeleteMode==False:
         #winreg.DeleteKeyEx(access_key, sub_key)
-        print('the delete function doesn´t work right now')
+        print('the delete function doesn´t work right now')  #You shouldn´t see this LOL ;)
 
 
 
@@ -183,7 +196,7 @@ if __name__ == "__main__":
     elif len(sys.argv) == 1:
         noColorsNoDelete = None
     else:
-        printPossibleOptionsAndExit()
+        optionsAndExit()
     main(noColorsNoDelete)
 
 
