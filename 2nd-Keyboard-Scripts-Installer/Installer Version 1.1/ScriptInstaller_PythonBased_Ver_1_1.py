@@ -19,7 +19,7 @@ class bcolors:
 
 #-------------------Variables--------------------
 standardPathForLuaMacros = 'C:/Program Files (x86)/'
-noColorMode = False
+
 #-------------------Functions--------------------
 
 def downloadFile(url, nameFile):
@@ -69,7 +69,10 @@ def printPossibleOptionsAndExit():
 
 
 #----------------Beginn of Program---------------
-def main(noColorsNoDelete=None):
+def main(noColorsNoDelete):
+
+    noColorMode = False
+    noDeleteMode = False
 
     if noColorsNoDelete == None:
         print("The delete function doesn´t work right now. Please run the script in No Delete mode!")
