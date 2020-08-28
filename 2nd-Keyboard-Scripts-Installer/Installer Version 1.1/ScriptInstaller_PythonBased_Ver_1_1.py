@@ -78,6 +78,14 @@ def main(noColorsNoDelete):
         print("The delete function doesn´t work right now. Please run the script in No Delete mode!")
         exit()
     elif removeSlashAndDash(noColorsNoDelete).lower() == 'nocolor':
+        noColorMode = True
+    elif removeSlashAndDash(noColorsNoDelete).lower() == 'nodelete':
+        noDeleteMode = False
+    else:
+        printPossibleOptionsAndExit()
+
+    #------------------Registry Edit-----------------
+    if noColorMode ==True:
         bcolors.HEADER = ''
         bcolors.OKBLUE = ''
         bcolors.OKGREEN = ''
@@ -86,15 +94,7 @@ def main(noColorsNoDelete):
         bcolors.ENDC = ''
         bcolors.BOLD = ''
         bcolors.UNDERLINE = ''
-
-        noColorMode = True
-    elif removeSlashAndDash(noColorsNoDelete).lower() == 'nodelete':
-        noDeleteMode = False
     else:
-        printPossibleOptionsAndExit()
-
-    #------------------Registry Edit-----------------
-    if noColorMode == False:
         access_registry = winreg.ConnectRegistry(None,winreg.HKEY_CURRENT_USER)
         access_key = winreg.OpenKey(winreg.HKEY_CURRENT_USER,r"Console",0,winreg.KEY_WRITE | winreg.KEY_WOW64_64KEY)
         sub_key = r'VirtualTerminalLevel'
