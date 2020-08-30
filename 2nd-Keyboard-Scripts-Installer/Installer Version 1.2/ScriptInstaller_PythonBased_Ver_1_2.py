@@ -66,6 +66,20 @@ def removeSlashAndDash(stringToEdit):
     returnString = returnString.replace(' ','')
     return returnString
 
+def helpAndExit():
+    print(' \n')
+    print('This is EldosHD´s installer script. You can use it to install his 2nd-Keyboard-Scripts, LuaMacros and Autohotkey.')
+    print("The script doesn´t work right now in normal mode. Please run it in NoColor or NoDelete Mode.")
+    print('To do that type the name of the script and give it the Option "-nocolor" or "-nodelete". You can also use a "/" instead of the "-".')
+    print('BTW the options are not case sensetiv.')
+    print('To see the options with an explanation, use "-options".\n')
+    print('The script will make an entry in your registry so your terminal can display colors. However the install will delete the entry afterwards!')
+    print('If you dont want it to delete the entry, run it in -NoDelete mode.')
+    print('If you dont want the script to edit your registry at all, use -NoColor mode.')
+    print('If you want to check the code for yourself, or learn more about the script in general, check out my GitHub repo for the script! --> https://github.com/EldosHD/myInstallers')
+    print('Thank you for using this installer. Have a good day ;)')
+    sys.exit()
+
 def optionsAndExit():
     print(' \n')
     print('Please use an valid Option! The possible options are:\n')
@@ -75,19 +89,6 @@ def optionsAndExit():
     print('The options are not case sensitiv!')
     sys.exit()
 
-def helpAndExit():
-    print(' \n')
-    print('This is EldosHD´s installer script. You can use it to install his 2nd-Keyboard-Scripts, LuaMacros and Autohotkey.')
-    print("The script doesn´t work right now in normal mode. Please run it in NoColor or NoDelete Mode.")
-    print('To do that type the name of the script and give it the Option "-nocolor" or "-nodelete". You can also use a "/" instead of the "-".')
-    print('BTW the options are not case sensetiv.')
-    print('To see the options with an explanation, use "-o" or "-options".\n')
-    print('The script will make an entry in your registry so your terminal can display colors. However the install will delete the entry afterwards!')
-    print('If you dont want it to delete the entry, run it in -NoDelete mode.')
-    print('If you dont want the script to edit your registry at all, use -NoColor mode.')
-    print('If you want to check the code for yourself, or learn more about the script in general, check out my GitHub repo for the script! --> https://github.com/EldosHD/myInstallers')
-    print('Thank you for using this installer. Have a good day ;)')
-    sys.exit()
 
 #----------------End of Functions----------------
 
@@ -104,9 +105,10 @@ def main(noColorsNoDelete):
         noColorMode = True
     elif removeSlashAndDash(noColorsNoDelete).lower() == 'nodelete':
         noDeleteMode = False
-    elif removeSlashAndDash(noColorsNoDelete).lower() == 'h' or 'help':
+    elif removeSlashAndDash(noColorsNoDelete).lower() == 'help':
         helpAndExit()
-    elif removeSlashAndDash(noColorsNoDelete).lower() == 'o' or 'options' or 'option':
+    elif removeSlashAndDash(noColorsNoDelete).lower() == 'options' or 'option':
+        print('hjewjkhefwhjkwefkjhfwekhjfwekhjfwekhjwfekhjwfehjkwfekhjwkhjfwe')
         optionsAndExit()
     else:
         optionsAndExit()
@@ -180,8 +182,8 @@ def main(noColorsNoDelete):
 #---------------End of Installing----------------
     if noDeleteMode==False:
         #winreg.DeleteKeyEx(access_key, sub_key)
-        print('the delete function doesn´t work right now')  #You shouldn´t see this LOL ;)
-
+        #print('the delete function doesn´t work right now')  #You shouldn´t see this LOL ;)
+        x=1
 
 
     time.sleep(3)
