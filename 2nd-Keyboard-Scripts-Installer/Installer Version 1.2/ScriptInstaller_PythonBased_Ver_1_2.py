@@ -125,7 +125,7 @@ def main(noColorsNoDelete):
     else:
         access_registry = winreg.ConnectRegistry(None,winreg.HKEY_CURRENT_USER)
         access_key = winreg.OpenKey(winreg.HKEY_CURRENT_USER,r"Console",0,winreg.KEY_ALL_ACCESS | winreg.KEY_WOW64_64KEY)
-        sub_key = r'supertest'
+        sub_key = r'VirtualTerminalLevel'
         winreg.SetValueEx(access_key, sub_key,0,winreg.REG_DWORD,1041)            
 
 

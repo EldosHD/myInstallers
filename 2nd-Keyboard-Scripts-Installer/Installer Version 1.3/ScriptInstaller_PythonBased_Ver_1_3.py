@@ -36,7 +36,7 @@ def unZipFiles(fileToUnzip, directoryToUnzipTo):
     print(bcolors.OKBLUE + '--Finished Unpacking--\n' + bcolors.ENDC)  
 
 def getPathAndMove():
-    print('Where do you want to install it? (If no path is specefied it will be installed in C:\Program Files (x86))\n')
+    print(bcolors.WARNING + 'Where do you want to install it? (If no path is specefied it will be installed in C:\Program Files (x86))\n' + bcolors.ENDC)
     path = input('NOTE THAT THE PATH HAS TO BE WRITTEN LIKE THIS C:/Folder/Folder/Folder/  <--- Dont forget the last slash\n')
     if path == '':
         path = standardPathForLuaMacros
@@ -134,7 +134,7 @@ def main(options):
     else:
         access_registry = winreg.ConnectRegistry(None,winreg.HKEY_CURRENT_USER)
         access_key = winreg.OpenKey(winreg.HKEY_CURRENT_USER,r"Console",0,winreg.KEY_ALL_ACCESS | winreg.KEY_WOW64_64KEY)
-        sub_key = r'supertest'
+        sub_key = r'VirtualTerminalLevel'
         winreg.SetValueEx(access_key, sub_key,0,winreg.REG_DWORD,1041)            
 
 
