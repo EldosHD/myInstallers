@@ -108,7 +108,6 @@ def main(noColorsNoDelete):
     elif removeSlashAndDash(noColorsNoDelete).lower() == 'help':
         helpAndExit()
     elif removeSlashAndDash(noColorsNoDelete).lower() == 'options' or 'option':
-        print('hjewjkhefwhjkwefkjhfwekhjfwekhjfwekhjwfekhjwfehjkwfekhjwkhjfwe')
         optionsAndExit()
     else:
         optionsAndExit()
