@@ -103,7 +103,6 @@ def main(options):
     customInstall = False
 
     options = removeSlashAndDash(options)
-    print(options)
     for string in options:
         if string == 'full':
             customInstall = False
@@ -122,9 +121,7 @@ def main(options):
         elif string == 'options':
             optionsAndExit()
         else:
-            print("fehler")
-            sys.exit()
-            #optionsAndExit()
+            optionsAndExit()
 
     #------------------Registry Edit-----------------
     if noColorMode ==True:
