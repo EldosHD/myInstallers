@@ -61,11 +61,12 @@ def getPathAndMove():
     return path
 
 def removeSlashAndDash(arrayToEdit):
-    for string in arrayToEdit:
-        string = string.lower()
-        string = string.replace('-','')
-        string = string.replace('/','')
-        string = string.replace(' ','')
+    for i in range(len(arrayToEdit)):
+        stringToChange = arrayToEdit[i]
+        stringToChange = stringToChange.lower()
+        stringToChange = stringToChange.replace('-','')
+        stringToChange = stringToChange.replace('/','')
+        arrayToEdit[i] = stringToChange
     return arrayToEdit
 
 def helpAndExit():
@@ -102,7 +103,7 @@ def main(options):
     customInstall = False
 
     options = removeSlashAndDash(options)
-
+    print(options)
     for string in options:
         if string == 'full':
             customInstall = False
@@ -116,10 +117,14 @@ def main(options):
             deleteMode = True
         elif string == 'help':
             helpAndExit()
-        elif string == 'options' or 'option':
+        elif string == 'option':
+            optionsAndExit()
+        elif string == 'options':
             optionsAndExit()
         else:
-            optionsAndExit()
+            print("fehler")
+            sys.exit()
+            #optionsAndExit()
 
     #------------------Registry Edit-----------------
     if noColorMode ==True:
