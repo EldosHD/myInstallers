@@ -62,10 +62,10 @@ def getPathAndMove():
 
 def removeSlashAndDash(arrayToEdit):
     for string in arrayToEdit:
+        string = string.lower()
         string = string.replace('-','')
         string = string.replace('/','')
         string = string.replace(' ','')
-        string = string.lower()
     return arrayToEdit
 
 def helpAndExit():
@@ -131,7 +131,7 @@ def main(options):
         bcolors.ENDC = ''
         bcolors.BOLD = ''
         bcolors.UNDERLINE = ''
-    else:
+    else:   #changes registry to display colors in cmd
         access_registry = winreg.ConnectRegistry(None,winreg.HKEY_CURRENT_USER)
         access_key = winreg.OpenKey(winreg.HKEY_CURRENT_USER,r"Console",0,winreg.KEY_ALL_ACCESS | winreg.KEY_WOW64_64KEY)
         sub_key = r'VirtualTerminalLevel'
@@ -139,7 +139,7 @@ def main(options):
 
 
 
-    print(bcolors.BOLD + 'Welcome to this installer Script for Valis scripts. I will guide you through all of this. \n' +bcolors.ENDC)
+    print(bcolors.BOLD + 'Welcome to this installer for Valis scripts. I will guide you through all of this. \n' +bcolors.ENDC)
 
     print(bcolors.WARNING + 'NOTE: If you want to install my Scripts or Install LuaMacros in the Program Files or Program Files (86x) Folder, you should run this Script as administrator \n' + bcolors.ENDC)
 
