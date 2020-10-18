@@ -6,6 +6,9 @@ import getpass
 import winshell
 import time
 import winreg
+
+#credit to https://stackoverflow.com/questions/287871/how-to-print-colored-text-in-python for the bcolors class!
+
 #----------------My Own Librarys-----------------
 class bcolors:
     HEADER = '\033[95m'
@@ -208,14 +211,14 @@ def main(options):
 
 if __name__ == "__main__":
     if len(sys.argv) >=2:
-        options = sys.argv      #so verändern, dass noColorsNoDelete ein array ist und options heisst
+        options = sys.argv      
     elif len(sys.argv) == 1:
         print('Please start the script with an argument from the command line. Type "SCRIPTNAME -help" for help!')
         input("Press any key to exit!")
         sys.exit()
     else:
         optionsAndExit()
-    options.pop(0)
+    options.pop(0)  #removes the scriptname from the array
     main(options)
 
 
