@@ -22,4 +22,22 @@ change your registry. I wanted to use colored text and the simplest solution was
 I added to HKEY_CURRENT_USER/Console/VirtualTerminalLevel the value 1041. (Idk why, but this makes the colors function) If you dont want to change the registry, use option -nocolor
 with -custom or -full. If you want to know more type SCRIPTNAME -help.
 ## Step 4 (Only for custom installation)
-At first the program will ask you
+At first the program will ask you if you want to install my scripts. Thats the reason why this script exists, so you should type y or Y. If you type anything else it will consider it as no.
+The program will ask if you want to install Autohotkey. If you type y the script will download the installer and launch it after it is done. 
+After that you will be asked if you want to install Luamacros. Type y if it isn´t installed already, since it and Autohotkey are both required for my script to function.
+If you only typed y for my scripts the installer will install them in C:/AHK and exit. **NOTE:** You should create a shortcut for my scripts and lua macros in your startup folder since the installer (currently) doesn´t handle that for you.
+## Step 5 (only if you typed y for luamacros)
+The script will ask you where to install it. If you leave it blank, it will install it to C:\Program Files (x86).
+**NOTE**: The path has to be written linke this: C:/Folder/Folder/Folder/  <--- Dont forget the last slash
+# Done
+Now you have my scripts. You will most likely have to modify my code for your needs.
+I used these librarys:
+- requests
+- shutil
+- os
+- sys
+- zipfile
+- getpass
+- winshell
+- time
+- winreg
