@@ -22,3 +22,4 @@ change your registry. I wanted to use colored text and the simplest solution was
 I added to HKEY_CURRENT_USER/Console/VirtualTerminalLevel the value 1041. (Idk why, but this makes the colors function) If you dont want to change the registry, use option -nocolor
 with -custom or -full. If you want to know more type SCRIPTNAME -help.
 ## Step 4 (Only for custom installation)
+At first the program will ask you
