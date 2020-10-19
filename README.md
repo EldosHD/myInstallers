@@ -31,7 +31,7 @@ The script will ask you where to install it. If you leave it blank, it will inst
 **NOTE**: The path has to be written linke this: C:/Folder/Folder/Folder/  <--- Dont forget the last slash
 # Done
 Now you have my scripts. You will most likely have to modify my code for your needs.
-I used these librarys:
+# Librarys
 - requests
 - shutil
 - os
