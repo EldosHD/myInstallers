@@ -69,7 +69,7 @@ def installAllScripts():
     try:
         downloadFile('https://github.com/EldosHD/2nd-Keyboard/archive/master.zip', 'master.zip')
     except:
-        print(bcolors.FAIL + 'Could not download all scripts. Check your internet connection. Besides, the github Servers could be down too. Check this link: https://github.com/EldosHD/2nd-Keyboard/')
+        print(bcolors.FAIL + 'Could not download all scripts. Check your internet connection. Besides, the github Servers could be down too. Check this link: https://github.com/EldosHD/2nd-Keyboard/' + bcolors.ENDC)
         return
     print('--Moving master.zip to C:--')
     shutil.move('master.zip', "C:/")
@@ -89,7 +89,7 @@ def installAHK():
     try:
         downloadFile('https://www.autohotkey.com/download/ahk-install.exe', 'AutoHotkeyInstaller.exe')
     except:
-        print(bcolors.FAIL + 'Could not download AHK. Check your internet connection. Besides, the Servers could be down too. Check this link: https://www.autohotkey.com/download/')
+        print(bcolors.FAIL + 'Could not download AHK. Check your internet connection. Besides, the Servers could be down too. Check this link: https://www.autohotkey.com/download/' + bcolors.ENDC)
         return
     print(bcolors.WARNING + 'The AHK installer will run once this application finishes\n' + bcolors.ENDC)
 
@@ -99,7 +99,7 @@ def installLuaMacros():
     try:
         downloadFile('http://www.hidmacros.eu/luamacros.zip', 'luaMacros.zip')
     except:
-        print(bcolors.FAIL + 'Could not download Lua Macros. Check your internet connection. Besides, the Servers could be down too. Check this link: http://www.hidmacros.eu/luamacros.zip')
+        print(bcolors.FAIL + 'Could not download Lua Macros. Check your internet connection. Besides, the Servers could be down too. Check this link: http://www.hidmacros.eu/luamacros.zip' + bcolors.ENDC)
         return
     path = getPathAndMove()
     print(bcolors.OKBLUE + '--Finished Moving--\n' + bcolors.ENDC)
