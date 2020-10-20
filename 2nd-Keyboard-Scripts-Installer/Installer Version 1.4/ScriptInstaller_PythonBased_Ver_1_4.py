@@ -64,6 +64,48 @@ def getPathAndMove():
             shutil.move('luaMacros.zip', path)
     return path
 
+def installAllScripts():
+    print('--Downloading GitHub Repo--' + '')
+    try:
+        downloadFile('https://github.com/EldosHD/2nd-Keyboard/archive/master.zip', 'master.zip')
+    except:
+        print(bcolors.FAIL + 'Could not download all scripts. Check your internet connection. Besides, the github Servers could be down too. Check this link: https://github.com/EldosHD/2nd-Keyboard/')
+        return
+    print('--Moving master.zip to C:--')
+    shutil.move('master.zip', "C:/")
+    print(bcolors.OKBLUE + '--Finished Moving--\n'+ bcolors.ENDC)
+    unZipFiles('C:/master.zip', 'C:/AHK')
+    print('--Installing Scripts--')
+    os.rename('C:/AHK/2nd-Keyboard-master', 'C:/AHK/2nd-keyboard' )
+    os.rename('C:/AHK/2nd-keyboard/2nd-Keyboard-Scripts','C:/AHK/2nd-keyboard/LUAMACROS')
+    os.remove('C:/AHK/2nd-keyboard/LUAMACROS/.gitattributes')
+    os.remove('C:/AHK/2nd-keyboard/README.md')
+    os.remove('C:/master.zip')
+    print(bcolors.OKBLUE +'--Finished Installing Scripts--\n' + bcolors.ENDC)
+    print(bcolors.WARNING + 'NOTE: YOU SHOULD CREATE A SHORTCUT FOR YOUR STARTUP FOLDER!!!\n' + bcolors.ENDC)
+
+def installAHK():
+    print('--Downloading Autohotkey--')
+    try:
+        downloadFile('https://www.autohotkey.com/download/ahk-install.exe', 'AutoHotkeyInstaller.exe')
+    except:
+        print(bcolors.FAIL + 'Could not download AHK. Check your internet connection. Besides, the Servers could be down too. Check this link: https://www.autohotkey.com/download/')
+        return
+    print(bcolors.WARNING + 'The AHK installer will run once this application finishes\n' + bcolors.ENDC)
+
+def installLuaMacros():
+    print('--Downloading LuaMacros--')
+
+    try:
+        downloadFile('http://www.hidmacros.eu/luamacros.zip', 'luaMacros.zip')
+    except:
+        print(bcolors.FAIL + 'Could not download Lua Macros. Check your internet connection. Besides, the Servers could be down too. Check this link: http://www.hidmacros.eu/luamacros.zip')
+        return
+    path = getPathAndMove()
+    print(bcolors.OKBLUE + '--Finished Moving--\n' + bcolors.ENDC)
+    unZipFiles(path + 'luaMacros.zip', path + 'luaMacros')
+    os.remove(path + 'luaMacros.zip')
+
 def isAdmin():      #credit to: https://raccoon.ninja/en/dev/using-python-to-check-if-the-application-is-running-as-an-administrator/
     try:
         is_admin = (os.getuid() == 0)
@@ -170,37 +212,15 @@ def main(options):
 #--------------Start of Installing---------------
 
     if allScripts.lower() == 'y':
-        print('--Downloading GitHub Repo--' + '')
-        downloadFile('https://github.com/EldosHD/2nd-Keyboard/archive/master.zip', 'master.zip')
-        print('--Moving master.zip to C:--')
-        shutil.move('master.zip', "C:/")
-        print(bcolors.OKBLUE + '--Finished Moving--\n'+ bcolors.ENDC)
-        unZipFiles('C:/master.zip', 'C:/AHK')
-        print('--Installing Scripts--')
-        os.rename('C:/AHK/2nd-Keyboard-master', 'C:/AHK/2nd-keyboard' )
-        os.rename('C:/AHK/2nd-keyboard/2nd-Keyboard-Scripts','C:/AHK/2nd-keyboard/LUAMACROS')
-        os.remove('C:/AHK/2nd-keyboard/LUAMACROS/.gitattributes')
-        os.remove('C:/AHK/2nd-keyboard/README.md')
-        os.remove('C:/master.zip')
-        print(bcolors.OKBLUE +'--Finished Installing Scripts--\n' + bcolors.ENDC)
-        print(bcolors.WARNING + 'NOTE: YOU SHOULD CREATE A SHORTCUT FOR YOUR STARTUP FOLDER!!!\n' + bcolors.ENDC)
+        installAllScripts()
 
 
     if autoHotkey.lower() == 'y':
-        print('--Downloading Autohotkey--')
-        downloadFile('https://www.autohotkey.com/download/ahk-install.exe', 'AutoHotkeyInstaller.exe')
-        print(bcolors.WARNING + 'The AHK installer will run once this application finishes\n' + bcolors.ENDC)
+        installAHK()
 
 
     if luaMacros.lower() == 'y':
-        print('--Downloading LuaMacros--')
-        downloadFile('http://www.hidmacros.eu/luamacros.zip', 'luaMacros.zip')
-        path = getPathAndMove()
-
-        print(bcolors.OKBLUE + '--Finished Moving--\n' + bcolors.ENDC)
-
-        unZipFiles(path + 'luaMacros.zip', path + 'luaMacros')
-        os.remove(path + 'luaMacros.zip')
+        installLuaMacros()
 
 
     print(bcolors.OKGREEN + 'Thank you for using this installer the programm will exit in 3 seconds' + bcolors.ENDC)
