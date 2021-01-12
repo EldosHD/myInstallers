@@ -1,6 +1,6 @@
 # Why does this repo exist?
 I dont know why you are here. But since you stumbled across my little project you might want to take a look. Here I dump my installer scripts for my other projects.
-The only current project is my Makrokeyboard. I created it with the help of Luamacros and i currently use it to trigger and control my scripts for Minecraft 
+The only current project is my Makrokeyboard. I created it with the help of Luamacros and I currently use it to trigger and control my scripts for Minecraft 
 and as a shortcut for certain folders and apps.
 The original code was written by Taran van Hemert. I followed this Tutorial https://www.youtube.com/watch?v=Arn8ExQ2Gjg by Taran and modified his code heavily.
 In case you want to check out my code, follow this link: https://github.com/EldosHD/2nd-Keyboard
